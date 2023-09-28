@@ -132,5 +132,6 @@ $RECYCLE.BIN/
 
 _NCrunch*
 
-
 .fake
+
+.vscode/
