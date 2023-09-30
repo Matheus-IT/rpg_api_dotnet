@@ -13,7 +13,7 @@ namespace rpg_game.Controllers
     {
         private static List<Character> characters = new List<Character>{
             new Character(),
-            new Character { Id = 1, Name = "sam" }
+            new Character { Id = 1, Name = "sam" },
         };
         [HttpGet("GetAll")]
         public ActionResult<List<Character>> Get()
@@ -24,6 +24,12 @@ namespace rpg_game.Controllers
         public ActionResult<Character> GetSingle(int id)
         {
             return Ok(characters.FirstOrDefault(c => c.Id == id));
+        }
+        [HttpPost]
+        public ActionResult<List<Character>> Add(Character character)
+        {
+            characters.Add(character);
+            return Ok(characters);
         }
     }
 }
