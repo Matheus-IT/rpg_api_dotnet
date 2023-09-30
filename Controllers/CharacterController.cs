@@ -15,10 +15,15 @@ namespace rpg_game.Controllers
             new Character(),
             new Character { Name = "sam" }
         };
-        [HttpGet]
+        [HttpGet("GetAll")]
         public ActionResult<List<Character>> Get()
         {
             return Ok(characters);
+        }
+        [HttpGet]
+        public ActionResult<Character> GetSingle()
+        {
+            return Ok(characters[0]);
         }
     }
 }
