@@ -1,3 +1,5 @@
+using rpg_game.Services.CharacterService;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,6 +7,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<ICharacterService, CharacterService>();
 
 var app = builder.Build();
 
@@ -22,3 +25,4 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+1:04:46 / 2:20:12

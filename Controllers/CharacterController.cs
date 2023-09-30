@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using rpg_game.Models;
+using rpg_game.Services.CharacterService;
 
 namespace rpg_game.Controllers
 {
@@ -11,25 +12,30 @@ namespace rpg_game.Controllers
     [Route("api/[controller]")]
     public class CharacterController : ControllerBase
     {
-        private static List<Character> characters = new List<Character>{
-            new Character(),
-            new Character { Id = 1, Name = "sam" },
-        };
+        private readonly ICharacterService _characterService;
+
+        public CharacterController(ICharacterService characterService)
+        {
+            _characterService = characterService;
+        }
+
         [HttpGet("GetAll")]
         public ActionResult<List<Character>> Get()
         {
-            return Ok(characters);
+            return Ok(_characterService.GetAll());
         }
+
         [HttpGet("{id}")]
         public ActionResult<Character> GetSingle(int id)
         {
-            return Ok(characters.FirstOrDefault(c => c.Id == id));
+            return Ok(_characterService.GetById(id));
         }
+
         [HttpPost]
         public ActionResult<List<Character>> Add(Character character)
         {
-            characters.Add(character);
-            return Ok(characters);
+            _characterService.AddOne(character);
+            return Ok(_characterService.GetAll());
         }
     }
 }
