@@ -8,8 +8,8 @@ namespace rpg_game.Services.CharacterService
 {
     public interface ICharacterService
     {
-        List<Character> GetAll();
-        Character GetById(int id);
-        List<Character> AddOne(Character character);
+        Task<ServiceResponse<List<Character>>> GetAll();
+        Task<ServiceResponse<Character>> GetById(int id);
+        Task<ServiceResponse<List<Character>>> AddOne(Character character);
     }
 }

@@ -13,20 +13,20 @@ namespace rpg_game.Services.CharacterService
             new Character { Id = 1, Name = "sam" },
         };
 
-        public List<Character> AddOne(Character character)
+        public async Task<ServiceResponse<List<Character>>> AddOne(Character character)
         {
             characters.Add(character);
-            return characters;
+            return new ServiceResponse<List<Character>>(characters);
         }
 
-        public List<Character> GetAll()
+        public async Task<ServiceResponse<List<Character>>> GetAll()
         {
-            return characters;
+            return new ServiceResponse<List<Character>>(characters);
         }
 
-        public Character GetById(int id)
+        public async Task<ServiceResponse<Character>> GetById(int id)
         {
-            return characters.FirstOrDefault(c => c.Id == id) ?? throw new Exception("Character not found");
+            return new ServiceResponse<Character>(characters.FirstOrDefault(c => c.Id == id));
         }
     }
 }
