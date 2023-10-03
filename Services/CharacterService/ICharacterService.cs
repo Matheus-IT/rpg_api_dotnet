@@ -12,5 +12,6 @@ namespace rpg_game.Services.CharacterService
         Task<ServiceResponse<List<GetCharacterDto>>> GetAll();
         Task<ServiceResponse<GetCharacterDto>> GetById(int id);
         Task<ServiceResponse<List<GetCharacterDto>>> AddOne(AddCharacterDto character);
+        Task<ServiceResponse<GetCharacterDto>> UpdateOne(UpdateCharacterDto character);
     }
 }
