@@ -8,14 +8,14 @@ namespace rpg_game.Models
     public class ServiceResponse<T>
     {
         public T? Data { get; set; }
+        public bool Success { get; set; }
+        public string Message { get; set; }
 
-        public ServiceResponse(T? data)
+        public ServiceResponse(T? data, string message = "", bool success = true)
         {
             Data = data;
+            Message = message;
+            Success = success;
         }
-
-        public bool Success { get; set; } = true;
-        public string Message { get; set; } = string.Empty;
-
     }
 }
