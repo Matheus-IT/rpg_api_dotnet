@@ -26,4 +26,4 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-1:55:04 / 2:20:12
+.NET 7 Beginner Course 🚀 Web API, Entity Framework 7 & SQL Server
