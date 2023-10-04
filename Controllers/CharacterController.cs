@@ -47,5 +47,14 @@ namespace rpg_game.Controllers
                 return NotFound(serviceRes);
             return Ok(serviceRes);
         }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<ServiceResponse<GetCharacterDto>>> DeleteSingle(int id)
+        {
+            var serviceRes = await _characterService.DeleteOne(id);
+            if (serviceRes.Data is null)
+                return NotFound(serviceRes);
+            return Ok(serviceRes);
+        }
     }
 }
